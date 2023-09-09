@@ -1,3 +1,3 @@
 export function testA(arg: number) {
-  console.log('FUNCTION TEST asasasas');
+  console.log('FUNCTION TEST');
 }
