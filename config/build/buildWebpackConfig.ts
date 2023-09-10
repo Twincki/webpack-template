@@ -10,7 +10,6 @@ import { buildResolves } from '../build/buildResolves';
 
 export function buildWebpackConfig(options: BuildOptions) {
   return {
-    mode: 'development',
     entry: path.resolve(__dirname, 'src', 'index.ts'),
     output: {
       filename: '[name].[hash].js',
