@@ -1,5 +1,5 @@
 import path from 'path';
-import webpack from 'webpack';
+import webpack, { node } from 'webpack';
 import 'webpack-dev-server';
 
 import { BuildOptions } from '../types/config';
@@ -8,15 +8,20 @@ import { buildPlugins } from '../build/buildPlugins';
 import { buildLoaders } from '../build/buildLoaders';
 import { buildResolves } from '../build/buildResolves';
 
-export function buildWebpackConfig(options: BuildOptions) {
+export function buildWebpackConfig(
+  options: BuildOptions
+): webpack.Configuration {
+  const { paths, mode } = options;
+
   return {
-    entry: path.resolve(__dirname, 'src', 'index.ts'),
+    mode,
+    entry: paths.entry,
     output: {
       filename: '[name].[hash].js',
-      path: path.resolve(__dirname, 'build'),
+      path: paths.build,
       clean: true,
     },
-    plugins: buildPlugins(),
+    plugins: buildPlugins(options),
     module: {
       rules: buildLoaders(),
     },
