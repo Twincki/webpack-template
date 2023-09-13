@@ -1,5 +1,4 @@
-import path from 'path';
-import webpack, { node } from 'webpack';
+import { Configuration } from 'webpack';
 import 'webpack-dev-server';
 
 import { BuildOptions } from '../types/config';
@@ -9,9 +8,7 @@ import { buildLoaders } from '../build/buildLoaders';
 import { buildResolves } from '../build/buildResolves';
 import { buildDevServer } from './buildDevServer';
 
-export function buildWebpackConfig(
-  options: BuildOptions
-): webpack.Configuration {
+export function buildWebpackConfig(options: BuildOptions): Configuration {
   const { paths, mode, isDev } = options;
 
   return {
